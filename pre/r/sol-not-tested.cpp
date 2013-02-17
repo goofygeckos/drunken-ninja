@@ -17,7 +17,7 @@ struct Painting {
 
 void Input(vector<Painting>* paintings) {
     int N, M;
-    cin >> N, M;
+    cin >> N; cin >> M;
 
     paintings->resize(N + 1);  // for easier numbering
 
@@ -36,23 +36,23 @@ void Input(vector<Painting>* paintings) {
 void ComputeGreatness(Painting* p, vector<Painting>* paintings) {
     if (!p->solved) {
         for (auto& i : p->influences) {
-            Painting& r = paintings->get(i.painting_no);
+	  Painting& r = paintings->at(i.painting_no);
             ComputeGreatness(&r, paintings);
-            p->greatness += i->proportion * r->greatness;
+            p->greatness += i.proportion * r.greatness;
         }
         p->solved = true;
     }
 }
 
 void Output(const vector<Painting>& paintings) {
-    for (int i = 1; i <= N; i++) {
-        cout << paintings[i].greatness;
-        if (i == N) {
-            cout << endl;
-        } else {
-            cout << " ";
-        }
+  for (int i = 1; i <= paintings.size(); i++) {
+    cout << paintings[i].greatness;
+    if (i == paintings.size()) {
+      cout << endl;
+    } else {
+      cout << " ";
     }
+  }
 }
 
 int main() {

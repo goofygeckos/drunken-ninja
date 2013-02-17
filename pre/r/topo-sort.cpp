@@ -57,4 +57,5 @@ int main(int argc, char** argv) {
   for (const auto& p : ps) {
     printf("%.3f ", p.value);
   }
+  printf("\n");
 }
