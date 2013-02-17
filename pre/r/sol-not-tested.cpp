@@ -45,9 +45,9 @@ void ComputeGreatness(Painting* p, vector<Painting>* paintings) {
 }
 
 void Output(const vector<Painting>& paintings) {
-  for (int i = 1; i <= paintings.size(); i++) {
+  for (int i = 1; i < paintings.size(); i++) {
     cout << paintings[i].greatness;
-    if (i == paintings.size()) {
+    if (i == paintings.size() - 1) {
       cout << endl;
     } else {
       cout << " ";
